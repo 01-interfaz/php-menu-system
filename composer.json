@@ -1,0 +1,19 @@
+{
+    "name": "interfaz/php-menu-system",
+    "description": "Sistema de menu basico para PHP",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.0.9",
+    "authors": [
+        {
+            "name": "Franco Rosatto",
+            "email": "francoe12012@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Interfaz\\MenuSystem\\": "/src"
+        }
+    },
+    "require": {}
+}
