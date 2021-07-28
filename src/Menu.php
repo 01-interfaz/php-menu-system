@@ -20,6 +20,11 @@ class Menu
         return new Menu($name, null);
     }
 
+    public static function createRoot()
+    {
+        return static::create('_root_', null);
+    }
+
     public function __construct(string $name, ?string $url = null)
     {
         $this->_name = $name;
