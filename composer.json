@@ -3,7 +3,7 @@
     "description": "Sistema de menu basico para PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.0.9",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Franco Rosatto",
