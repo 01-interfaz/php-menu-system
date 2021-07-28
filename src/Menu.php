@@ -6,7 +6,7 @@ use Closure;
 
 class Menu
 {
-    public ?Closure $getCurrentURLHandle;
+    public static ?Closure $getCurrentURLHandle = null;
 
     /** @var Menu[] */
     private array $_childrens = [];
