@@ -15,5 +15,7 @@
             "Interfaz\\MenuSystem\\": "/src"
         }
     },
-    "require": {}
+    "require": {
+        "php" : ">=7.3"
+    }
 }
