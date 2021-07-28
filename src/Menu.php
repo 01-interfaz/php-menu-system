@@ -2,9 +2,11 @@
 
 namespace Interfaz\MenuSystem;
 
+use Closure;
+
 class Menu
 {
-    public static $getCurrentURLHandle;
+    public ?Closure $getCurrentURLHandle;
 
     /** @var Menu[] */
     private array $_childrens = [];
