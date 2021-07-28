@@ -2,11 +2,9 @@
 
 namespace Interfaz\MenuSystem;
 
-use Closure;
-
 class Menu
 {
-    public static ?Closure $getCurrentURLHandle;
+    public static $getCurrentURLHandle;
 
     /** @var Menu[] */
     private array $_childrens = [];
@@ -122,7 +120,8 @@ class Menu
         if (!$this->hasUrl()) return false;
         //return $this->getUrl() === explode('?', request()->getUri())[0];
         if (self::$getCurrentURLHandle === null) return false;
-        $url = self::$getCurrentURLHandle->__invoke();
+        $url = self::$getCurrentURLHandle;
+        $url = $url();
         return $this->getUrl() === explode('?', $url)[0];
     }
 
