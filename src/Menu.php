@@ -47,7 +47,7 @@ class Menu
             foreach ($parts as $part) {
                 $child = $select->getChildrenOfName($part);
                 if ($child === null) {
-                    $child = new Menu($path, null, $select->renderHandle);
+                    $child = new Menu($path, null);
                     $select->add($child);
                 }
                 $select = $child;
