@@ -7,7 +7,6 @@ use Closure;
 class Menu
 {
     public static ?Closure $getCurrentURLHandle;
-    public static ?Closure $renderHandle;
 
     /** @var Menu[] */
     private array $_childrens = [];
@@ -45,7 +44,7 @@ class Menu
             foreach ($parts as $part) {
                 $child = $select->getChildrenOfName($part);
                 if ($child === null) {
-                    $child = new Menu($path);
+                    $child = new Menu($path, null, $select->renderHandle);
                     $select->add($child);
                 }
                 $select = $child;
@@ -141,10 +140,5 @@ class Menu
     public function getName(): string
     {
         return $this->_name;
-    }
-
-    public function render()
-    {
-        return self::$renderHandle->__invoke();
     }
 }
