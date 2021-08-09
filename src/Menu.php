@@ -14,6 +14,7 @@ class Menu
     private ?string $_url = null;
     private ?string $_icon = null;
     private $_permissionCallback = null;
+    private ?Menu $_parent = null;
 
     public static function create(string $name): Menu
     {
@@ -62,6 +63,7 @@ class Menu
     {
         $select = $this->navTo($path);
         $select->_childrens[] = $menu;
+        $menu->_parent = $select;
         return $menu;
     }
 
@@ -89,6 +91,16 @@ class Menu
     public function getLength(): int
     {
         return count($this->_childrens);
+    }
+
+    public function hasParent(): bool
+    {
+        return $this->_parent !== null;
+    }
+
+    public function getParent() : Menu
+    {
+        return $this->_parent;
     }
 
     public function getChildren(int $index): Menu
