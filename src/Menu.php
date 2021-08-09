@@ -15,6 +15,7 @@ class Menu
     private ?string $_icon = null;
     private $_permissionCallback = null;
     private ?Menu $_parent = null;
+    private string $_label = "";
 
     public static function create(string $name): Menu
     {
@@ -29,6 +30,7 @@ class Menu
     public function __construct(string $name, ?string $url = null)
     {
         $this->_name = $name;
+        $this->_label = $name;
         $this->setUrl($url);
         $this->initilize();
     }
@@ -83,6 +85,16 @@ class Menu
         return $this->_icon;
     }
 
+    public function setLabel(string $label)
+    {
+        $this->_label = $label;
+    }
+
+    public function getLabel(): string
+    {
+        return $this->_label;
+    }
+
     public function hasChildrens(): bool
     {
         return $this->getLength() > 0;
@@ -98,17 +110,17 @@ class Menu
         return $this->_parent !== null;
     }
 
-    public function getParent() : Menu
+    public function getParent(): Menu
     {
         return $this->_parent;
     }
 
-    public function getDepth() : int
+    public function getDepth(): int
     {
         $parent = $this->_parent;
         $value = 0;
-        while($parent !== null) {
-            $value ++;
+        while ($parent !== null) {
+            $value++;
             $parent = $parent->_parent;
         }
         return $value;
