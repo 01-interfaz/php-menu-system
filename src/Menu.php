@@ -103,6 +103,17 @@ class Menu
         return $this->_parent;
     }
 
+    public function getDepth() : int
+    {
+        $parent = $this->_parent;
+        $value = 0;
+        while($parent !== null) {
+            $value ++;
+            $parent = $parent->_parent;
+        }
+        return $value;
+    }
+
     public function getChildren(int $index): Menu
     {
         return $this->_childrens[$index];
