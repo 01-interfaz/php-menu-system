@@ -85,9 +85,10 @@ class Menu
         return $this->_icon;
     }
 
-    public function setLabel(string $label)
+    public function setLabel(string $label) : Menu
     {
         $this->_label = $label;
+        return $this;
     }
 
     public function getLabel(): string
