@@ -101,6 +101,22 @@ class Menu
         return $this->getLength() > 0;
     }
 
+    /**
+     * Evalua si tiene hijos directos con permisos.
+     *
+     * @return boolean
+     */
+    public function hasValidChildrens(): bool
+    {
+        if(!$this->hasPermission()) return false;
+        
+        foreach($this->_childrens as $child)
+        {
+            if($child->hasValidChildrens($child))return true;
+        }
+        return false;
+    }
+
     public function getLength(): int
     {
         return count($this->_childrens);
