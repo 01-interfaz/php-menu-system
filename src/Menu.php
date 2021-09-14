@@ -85,7 +85,7 @@ class Menu
         return $this->_icon;
     }
 
-    public function setLabel(string $label) : Menu
+    public function setLabel(string $label): Menu
     {
         $this->_label = $label;
         return $this;
@@ -108,11 +108,10 @@ class Menu
      */
     public function hasValidChildrens(): bool
     {
-        if(!$this->hasPermission()) return false;
-        
-        foreach($this->_childrens as $child)
-        {
-            if($child->hasValidChildrens($child))return true;
+        if (!$this->hasPermission()) return false;
+
+        foreach ($this->_childrens as $child) {
+            if ($child->hasValidChildrens($child)) return true;
         }
         return false;
     }
@@ -156,11 +155,11 @@ class Menu
         return null;
     }
 
-    public function canRender() : bool
+    public function canRender(int $amount = 0): bool
     {
-        if (!$this->hasPermission()) return false;
-        foreach($this->_childrens as $child) if(!$child->canRender($child)) return false;
-        return true;
+        if ($this->hasPermission() && $this->hasUrl()) $amount += 1;
+        foreach ($this->_childrens as $child) $amount = $child->canRender($amount);
+        return $amount > 0;
     }
 
     public function hasPermission(): bool
