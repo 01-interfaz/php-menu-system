@@ -156,6 +156,13 @@ class Menu
         return null;
     }
 
+    public function canRender() : bool
+    {
+        if (!$this->hasPermission()) return false;
+        foreach($this->_childrens as $child) if(!$child->canRender($child)) return false;
+        return true;
+    }
+
     public function hasPermission(): bool
     {
         if ($this->_permissionCallback == null) return true;
